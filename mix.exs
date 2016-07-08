@@ -19,7 +19,7 @@ defmodule Shareguru.Mixfile do
   def application do
     [mod: {Shareguru, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :ueberauth_google]]
   end
 
   # Specifies which paths to compile per environment.

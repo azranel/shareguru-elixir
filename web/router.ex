@@ -13,8 +13,19 @@ defmodule Shareguru.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :authenticated do
+    plug Shareguru.AuthenticationPlug
+  end
+
+  scope "/auth", Shareguru do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+  end
+
   scope "/", Shareguru do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :authenticated] # Use the default browser stack
 
     get "/", PageController, :index
   end

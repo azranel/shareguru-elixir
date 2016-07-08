@@ -10,8 +10,8 @@ defmodule Shareguru.User do
     timestamps
   end
 
-  @required_fields ~w(name email picture expire_at)
-  @optional_fields ~w()
+  @required_fields ~w(name email picture)
+  @optional_fields ~w(expire_at)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

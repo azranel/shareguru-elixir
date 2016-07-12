@@ -4,7 +4,7 @@ defmodule Shareguru.AuthenticationPlug do
 
   def init(options), do: options
 
-  def call(conn, options) do
+  def call(conn, _) do
     case get_session(conn, :current_user) do
       nil -> do_redirect(conn, Shareguru.Router.Helpers.auth_path(Shareguru.Endpoint, :request, "google"))
       _ -> conn

@@ -6,6 +6,7 @@ defmodule Shareguru.User do
     field :email, :string
     field :picture, :string
     field :expire_at, Ecto.DateTime
+    field :hd, :string, virtual: true # Mail domain
 
     timestamps
   end
@@ -23,5 +24,6 @@ defmodule Shareguru.User do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> validate_format(:email, ~r/@/)
+    |> validate_inclusion(:hd, ["netguru.pl", "netguru.co"])
   end
 end

@@ -1,5 +1,7 @@
 # Shareguru
 
+[![Build Status](https://travis-ci.org/azranel/shareguru-elixir.svg?branch=travis-setup)](https://travis-ci.org/azranel/shareguru-elixir)
+
 ## Setup
 
 * Install dependencies with `mix deps.get`

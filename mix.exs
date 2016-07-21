@@ -19,7 +19,7 @@ defmodule Shareguru.Mixfile do
   def application do
     [mod: {Shareguru, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :ueberauth_google]]
+                    :phoenix_ecto, :postgrex, :ueberauth_google, :rollbax]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,7 +37,8 @@ defmodule Shareguru.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:ueberauth_google, "~> 0.2"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:rollbax, "~> 0.6"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

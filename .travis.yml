@@ -4,6 +4,6 @@ elixir:
 otp_release:
   - 18.2.1
 before_install:
-  - echo "use Mix.Config" >> ./config/dev.secret.exs
-  - echo "use Mix.Config" >> ./config/test.secret.exs
-  - echo "use Mix.Config" >> ./config/prod.secret.exs
+  - cp ./config/dev.secret.exs.sample ./config/dev.secret.exs
+  - cp ./config/test.secret.exs.sample ./config/test.secret.exs
+  - cp ./config/prod.secret.exs.sample ./config/prod.secret.exs

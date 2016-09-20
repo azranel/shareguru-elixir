@@ -35,8 +35,6 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :shareguru, Shareguru.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
   database: "shareguru_dev",
   hostname: "localhost",
   pool_size: 10

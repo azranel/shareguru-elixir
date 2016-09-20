@@ -15,8 +15,9 @@ defmodule Shareguru.LinkController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"link" => link_params}) do
-    changeset = Link.changeset(%Link{}, link_params)
+  def create(%{assigns: %{current_user: user} } = conn, %{"link" => link_params}) do
+    changeset = %Link{user_id: user.id}
+    |> Link.changeset(link_params)
 
     case Repo.insert(changeset) do
       {:ok, _link} ->

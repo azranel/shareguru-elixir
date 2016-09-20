@@ -10,7 +10,7 @@ defmodule Shareguru.Link do
     timestamps
   end
 
-  @required_fields ~w(description url user)
+  @required_fields ~w(description url user_id)
   @optional_fields ~w()
 
   @doc """

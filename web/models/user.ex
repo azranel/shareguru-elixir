@@ -7,6 +7,8 @@ defmodule Shareguru.User do
     field :picture, :string
     field :expire_at, Ecto.DateTime
 
+    has_many :links, Shareguru.Link
+
     timestamps
   end
 

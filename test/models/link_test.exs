@@ -6,7 +6,7 @@ defmodule Shareguru.LinkTest do
   @valid_attrs %{
     description: "some content",
     url: "some content",
-    link: "http://example.com"
+    user_id: 1
   }
   @invalid_attrs %{}
 

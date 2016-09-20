@@ -5,10 +5,12 @@ defmodule Shareguru.Link do
     field :description, :string
     field :url, :string
 
+    belongs_to :user, Shareguru.User
+
     timestamps
   end
 
-  @required_fields ~w(description url)
+  @required_fields ~w(description url user)
   @optional_fields ~w()
 
   @doc """

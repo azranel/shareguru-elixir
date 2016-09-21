@@ -36,7 +36,28 @@ defmodule Shareguru.ConnCase do
     unless tags[:async] do
       Ecto.Adapters.SQL.restart_test_transaction(Shareguru.Repo, [])
     end
+    
+    conn = Phoenix.ConnTest.conn()
 
-    {:ok, conn: Phoenix.ConnTest.conn()}
+    conn = cond do
+      tags[:authorised] -> authorised(conn)          
+      true -> conn
+    end
+
+    {:ok, conn: conn}
+  end
+  
+  defp authorised(conn) do
+    import Plug.Conn, only: [assign: 3]
+    alias Shareguru.Repo
+    alias Shareguru.User
+    
+    %User{
+      id: 123,
+      name: "dude",
+      email: "dude@example.com"
+    } |> Repo.insert
+
+    conn |> assign(:current_user, Repo.get(User, 123))
   end
 end

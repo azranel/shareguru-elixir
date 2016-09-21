@@ -1,0 +1,10 @@
+h2 Show link
+ul
+  li
+    strong Description:
+    = @link.description
+  li
+    strong Url:
+    = @link.url
+= link "Edit", to: link_path(@conn, :edit, @link)
+= link "Back", to: link_path(@conn, :index)

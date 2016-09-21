@@ -33,3 +33,7 @@ config :ueberauth, Ueberauth,
   providers: [
     google: {Ueberauth.Strategy.Google, []}
   ]
+
+config :phoenix, :template_engines,
+  slim: PhoenixSlime.Engine,
+  slime: PhoenixSlime.Engine

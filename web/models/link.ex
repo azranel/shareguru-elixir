@@ -1,19 +1,17 @@
-defmodule Shareguru.User do
+defmodule Shareguru.Link do
   use Shareguru.Web, :model
 
-  schema "users" do
-    field :name, :string
-    field :email, :string
-    field :picture, :string
-    field :expire_at, Ecto.DateTime
+  schema "links" do
+    field :description, :string
+    field :url, :string
 
-    has_many :links, Shareguru.Link
+    belongs_to :user, Shareguru.User
 
     timestamps
   end
 
-  @required_fields ~w(name email picture)
-  @optional_fields ~w(expire_at)
+  @required_fields ~w(description url user_id)
+  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -24,6 +22,6 @@ defmodule Shareguru.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    |> validate_format(:email, ~r/@netguru\.(co|pl)/)
+    |> unique_constraint(:url)
   end
 end

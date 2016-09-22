@@ -29,6 +29,10 @@ defmodule Shareguru.ConnCase do
 
       # The default endpoint for testing
       @endpoint Shareguru.Endpoint
+
+      defp with_current_user(conn, user) do
+        conn |> assign(:current_user, user)
+      end
     end
   end
 
@@ -39,25 +43,6 @@ defmodule Shareguru.ConnCase do
     
     conn = Phoenix.ConnTest.conn()
 
-    conn = cond do
-      tags[:authorised] -> authorised(conn)          
-      true -> conn
-    end
-
     {:ok, conn: conn}
-  end
-  
-  defp authorised(conn) do
-    import Plug.Conn, only: [assign: 3]
-    alias Shareguru.Repo
-    alias Shareguru.User
-    
-    %User{
-      id: 123,
-      name: "dude",
-      email: "dude@example.com"
-    } |> Repo.insert
-
-    conn |> assign(:current_user, Repo.get(User, 123))
   end
 end

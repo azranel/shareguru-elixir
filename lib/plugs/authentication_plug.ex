@@ -9,7 +9,7 @@ defmodule Shareguru.AuthenticationPlug do
 
   def call(conn, _) do
     if UserSession.current_user(conn) do
-      conn
+      conn |> Plug.Conn.assign(:current_user, UserSession.current_user(conn))
     else
       do_redirect(conn, Helpers.auth_path(Endpoint, :request, "google"))
     end

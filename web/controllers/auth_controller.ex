@@ -17,7 +17,7 @@ defmodule Shareguru.AuthController do
   def delete(conn, _params) do
     conn
     |> put_flash(:info, "You have been logged out!")
-    |> configure_session(drop: true)
+    |> Shareguru.UserSession.logout
     |> redirect(to: "/")
   end
 
@@ -33,7 +33,7 @@ defmodule Shareguru.AuthController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "Successfully authenticated.")
-        |> put_session(:current_user, user)
+        |> Shareguru.UserSession.login_user(user)
         |> redirect(to: Shareguru.Router.Helpers.page_path(conn, :index))
       {:error, reason} ->
         conn

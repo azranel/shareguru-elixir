@@ -4,7 +4,19 @@ defmodule Shareguru.LinkControllerTest do
   alias Shareguru.Link
   @valid_attrs %{description: "some content", url: "some content", user_id: 123}
   @invalid_attrs %{}
-  @moduletag authorised: true
+
+  setup do
+    user = %Shareguru.User{
+      id: 123,
+      name: "dude",
+      email: "dude@example.com"
+    }
+
+    conn = conn 
+    |> with_current_user(user)
+
+    {:ok, conn: conn} 
+  end
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, link_path(conn, :index)

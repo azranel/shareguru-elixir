@@ -19,6 +19,9 @@ html lang="en"
             a href="#"  Links
           li
             a href="#"  Quotes
+        ul.nav.navbar-nav.navbar-right
+          li
+            = link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "navbar-text"
     .container
       = render "_flash_messages.html", conn: @conn
 

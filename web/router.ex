@@ -22,6 +22,7 @@ defmodule Shareguru.Router do
 
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
+    delete "/", AuthController, :delete
   end
 
   scope "/", Shareguru do
